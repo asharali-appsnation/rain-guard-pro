@@ -16,6 +16,8 @@
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/stack": "^6.3.29",
     "@reduxjs/toolkit": "^2.2.3",
+    "@sentry/react-native": "~5.20.0",
+    "axios": "^1.7.2",
     "expo": "~50.0.17",
     "expo-dev-client": "~3.3.12",
     "expo-location": "16.5.5",

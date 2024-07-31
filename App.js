@@ -10,6 +10,18 @@ import AlertScreen from "./screens/home/AlertScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import * as Sentry from "@sentry/react-native";
+Sentry.init({
+  dsn: "https://a76ecfac4bdc80166d3757c0558096f6@o4507691477499904.ingest.us.sentry.io/4507691479203840",
+  // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+  // We recommend adjusting this value in production.
+  tracesSampleRate: 1.0,
+  _experiments: {
+    // profilesSampleRate is relative to tracesSampleRate.
+    // Here, we'll capture profiles for 100% of transactions.
+    profilesSampleRate: 1.0,
+  },
+});
 export default function App() {
   const Stack = createStackNavigator();
   return (
@@ -53,6 +65,7 @@ export default function App() {
     </Provider>
   );
 }
+
 
 const styles = StyleSheet.create({});
 AppRegistry.registerComponent('MyApp', () => App); // Register your app component
