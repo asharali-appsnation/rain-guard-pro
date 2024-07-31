@@ -119,12 +119,20 @@ export default function WelcomeScreen({ navigation }) {
           let data = res.data.feeds;
           finalData = data.map((d) => ({
             ...d,
-            field1: parseFloat(d.field1),
-            field2: parseFloat(d.field2),
+            field1: parseFloat(d.field1 ? d.field1 : 67.04692),
+            field2: parseFloat(d.field2 ? d.field2 : 24.97411),
           }));
           setMarkerData([
             ...finalData,
             ...[
+              {
+                created_at: "2024-07-31T04:00:11.627Z",
+                entry_id: 1,
+                field1: 67.046771,
+                field2: 24.974119,
+                field3: "Medium",
+                field4: "478",
+              },
               {
                 created_at: "2024-07-31T04:00:11.627Z",
                 entry_id: 1,
@@ -171,6 +179,7 @@ export default function WelcomeScreen({ navigation }) {
     }
   }, [currentLocation]);
 
+  
   const getLocationAsync = async () => {
     try {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -200,7 +209,7 @@ export default function WelcomeScreen({ navigation }) {
         {/* Google Map View (Replace with actual GoogleMapView component) */}
         {currentLocation ? (
           <MapView
-            provider={PROVIDER_GOOGLE}
+            // provider={PROVIDER_GOOGLE}
             legalLabelInsets={{ bottom: -100, right: -100 }}
             // onError={(e) => {
             //   console.log(e);
@@ -222,7 +231,6 @@ export default function WelcomeScreen({ navigation }) {
               
                 onPress={(e) => {
                   const { coordinate: LatLng, position: Point } = e.nativeEvent;
-                  console.log(LatLng, Point);
                   const precision = 0.000001;
                   // console.log(
                   //   e.currentTarget._internalFiberInstanceHandleDEV
